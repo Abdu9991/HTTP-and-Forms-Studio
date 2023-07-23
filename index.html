@@ -3,7 +3,23 @@
 <head>
 	<meta charset="utf-8">
 	<script>
-		
+		let actions = {
+			google: 'https://www.google.com/search',
+			duckDuck: 'https://duckduckgo.com/',
+			bing: 'https://www.bing.com/search',
+			ask: 'https://www.ask.com/web'
+		}
+		function setSearchEngine(){
+const buttonSelected = document.querySelector('input[name=engine]:checked');
+const form = document.getElementById('searchForm');
+
+let url = actions[buttonSelected.value];
+form.action = url;
+		}
+		window.addEventListener('load', function(){
+const form = document.getElementById('searchForm');
+form.addEventListener('submit',setSearchEngine);
+ });
 	</script>
 </head>
 
