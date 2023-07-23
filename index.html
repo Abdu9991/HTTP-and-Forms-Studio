@@ -1,6 +1,8 @@
 <!doctype html>
 
 <head>
+	<link href="./style.css" type="text/css" rel="stylesheet"/>
+	<link href="https://fonst.googleaps.com/cssfamily=pracifico&display=swap"/ rel="stylesheet">
 	<meta charset="utf-8">
 	<script>
 		let actions = {
@@ -11,7 +13,17 @@
 		}
 		function setSearchEngine(){
 const buttonSelected = document.querySelector('input[name=engine]:checked');
+const query = document.getElementById('q');
 const form = document.getElementById('searchForm');
+// Bonus Mission part 1- Add validation 
+if (query.value.trim() === ''){
+alert("Oops! You didn't eneter anything to search for.");
+event.preventDefault();
+}
+else if(!buttonSelected){
+	alert("Oop! Which search engine do you want to use");
+	event.preventDefault();
+}
 
 let url = actions[buttonSelected.value];
 form.action = url;
@@ -24,14 +36,16 @@ form.addEventListener('submit',setSearchEngine);
 </head>
 
 <body>
-
+	<h1>Ultimate Search Engine Land</h1>
+	<div id="serach-bar">
+	<p id="search-header">Search anywhere and everywhere</p>
 	<form id="searchForm" target="_blank">
     <input type="text" id="q" name="q"/>
-	<label></label><input type="radio" name="engine" value="google"/>Google</label>
-	<label></label><input type="radio" name="engine" value="duckDuckGo"/>DuckDuckGo</label>
-	<label></label><input type="radio" name="engine" value="Bing"/>Bing</label>
-	<label></label><input type="radio" name="engine" value="ask"/>Ask</label>
+	<label><input type="radio" name="engine" value="google"/>Google</label>
+	<label><input type="radio" name="engine" value="duckDuckGo"/>DuckDuckGo</label>
+	<label><input type="radio" name="engine" value="Bing"/>Bing</label>
+	<label><input type="radio" name="engine" value="ask"/>Ask</label>
     <button id="submit" value="Go">Go!</button>
 	</form>
-
+    </div>
 </body>
